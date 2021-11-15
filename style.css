@@ -1,0 +1,210 @@
+/* general rules */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* background/container rules */
+#background_main {
+    height: 100vh;
+    background-color: rgb(220,219,210);
+    position: relative;
+}
+
+#background_main .background_top {
+    width: 100vw;
+    height: 150px;
+    position: absolute;
+    top: 0;
+    background-color: rgb(2,149,136);
+}
+
+#container_main {
+    width: 96%;
+    height: 92%;
+    background-color: rgb(234,234,234);
+    position: absolute;
+    top: 4%;
+    left: 2%;
+    display: flex;
+    overflow: hidden;
+}
+
+/* left navigation rules */
+#nav_box {
+    width: 30%;
+    min-width: 400px;
+    height: 100%;
+    background-color: rgb(255, 255, 255);
+}
+
+#nav_notifications {
+    background-color: rgb(141,218,252);
+    height: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#nav_bell {
+    background-color: white;
+    border-radius: 50px;
+    color: rgb(141,218,252);
+    padding: 6px;
+    margin: 0 15px;
+}
+
+#nav_bell i {
+    font-size: 1.5em;
+    padding: 5px;
+}
+
+#nav_search {
+    /* padding: 6px;
+    height: 40px; */
+    height: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgb(250, 250, 250);
+}
+
+#nav_search .search {
+    width: 10%;
+    text-align: center;
+}
+
+#nav_search input {
+    width: 90%;
+}
+
+#nav_contacts_list {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+}
+
+.nav_contact {
+    height: 90px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav_contact .user_name {
+    font-weight: 700;
+}
+
+.nav_contact.active {
+    background-color: rgb(234,234,234);
+}
+
+.last_message_text, .last_message_date {
+    color: gray;
+}
+
+/* chat box rules */
+#chat_box {
+    width: 70%;
+    min-width: 500px;
+    height: 100%;
+    background-image: url("https://user-images.githubusercontent.com/15075759/28719144-86dc0f70-73b1-11e7-911d-60d70fcded21.png");
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+#chat_box_contact .user_name {
+    font-weight: 500;
+}
+
+.user_last_seen {
+    color: gray;
+    font-weight: 500;
+}
+
+#chat_box_messages {
+    display: flex;
+    flex-direction: column;
+    padding: 50px;
+    overflow: auto;
+}
+
+#chat_box_messages .chat_message {
+    max-width: 80%;
+    border-radius: 10px;
+    margin: 10px 0;
+}
+
+.chat_message.sent {
+    background-color: rgb(213, 249, 186);
+    align-self: flex-end;
+}
+
+.chat_message.received {
+    background-color: rgb(255, 255, 255);
+    align-self: flex-start;
+}
+
+.chat_message_data {
+    text-align: right;
+    color: gray;
+}
+
+#new_message {
+    background-color: rgb(243, 238, 233);
+    height: 70px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#new_message i {
+    font-size: 1.5em;
+    color: gray;
+    margin: 0 10px;
+}
+
+#new_message input {
+    width: 90%;
+    height: 50px;
+}
+
+/* header left box/chat box */
+#nav_user_profile, #chat_box_contact {
+    min-width: 400px;
+    height: 70px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgb(234,234,234);
+}
+
+.user_info {
+    display: flex;
+    align-items: center;
+}
+
+.user_info img {
+    width: 50px;
+    border-radius: 50%;
+    margin: 0 15px;
+}
+
+#nav_user_profile .user_name {
+    font-weight: 700;
+}
+
+.user_commands {
+    width: 100px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.user_commands i {
+    display: inline-block;
+    font-size: 1.5em;
+    color: rgb(177,177,177);
+}
