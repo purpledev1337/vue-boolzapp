@@ -104,6 +104,9 @@
 .last_message_text, .last_message_date {
     color: gray;
 }
+.last_message_date {
+    min-width: 140px;
+}
 
 /* chat box rules */
 #chat_box {

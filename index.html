@@ -51,68 +51,16 @@
                 <!-- contact list -->
                 <section id="nav_contacts_list">
                     <!-- contact tab -->
-                    <div class="nav_contact">
+                    <div v-for="contact,i in contacts" class="nav_contact" :class="i === activeContact ? 'active' : '' " :mykey="i">
                         <div class="user_info">
-                            <img src="/img/avatar_1.jpg" alt="">
+                            <img :src="contact.avatar" alt="contact.name">
                             <div>
-                                <div class="user_name">Nome Utente</div>
-                                <div class="last_message_text">Tutto fatto!</div>
+                                <div class="user_name">{{ contact.name }}</div>
+                                <div class="last_message_text">{{ contact.messages[0].text }}</div>
                             </div>
                         </div>
                         <div class="last_message_date">
-                            <div>10/01/2020 16:15:22</div>
-                        </div>
-                    </div>
-                    <!-- contact tab -->
-                    <div class="nav_contact">
-                        <div class="user_info">
-                            <img src="/img/avatar_2.jpg" alt="">
-                            <div>
-                                <div class="user_name">Nome Utente</div>
-                                <div class="last_message_text">Tutto fatto!</div>
-                            </div>
-                        </div>
-                        <div class="last_message_date">
-                            <div>10/01/2020 16:15:22</div>
-                        </div>
-                    </div>
-                    <!-- contact tab -->
-                    <div class="nav_contact active">
-                        <div class="user_info">
-                            <img src="/img/avatar_3.jpg" alt="">
-                            <div>
-                                <div class="user_name">Nome Utente</div>
-                                <div class="last_message_text">Tutto fatto!</div>
-                            </div>
-                        </div>
-                        <div class="last_message_date">
-                            <div>10/01/2020 16:15:22</div>
-                        </div>
-                    </div>
-                    <!-- contact tab -->
-                    <div class="nav_contact">
-                        <div class="user_info">
-                            <img src="/img/avatar_4.jpg" alt="">
-                            <div>
-                                <div class="user_name">Nome Utente</div>
-                                <div class="last_message_text">Tutto fatto!</div>
-                            </div>
-                        </div>
-                        <div class="last_message_date">
-                            <div>10/01/2020 16:15:22</div>
-                        </div>
-                    </div>
-                    <!-- contact tab -->
-                    <div class="nav_contact">
-                        <div class="user_info">
-                            <img src="/img/avatar_2.jpg" alt="">
-                            <div>
-                                <div class="user_name">Nome Utente</div>
-                                <div class="last_message_text">Tutto fatto!</div>
-                            </div>
-                        </div>
-                        <div class="last_message_date">
-                            <div>10/01/2020 16:15:22</div>
+                            <div>{{ contact.messages[0].date }}</div>
                         </div>
                     </div>
                 </section>
