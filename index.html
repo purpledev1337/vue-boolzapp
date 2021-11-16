@@ -51,16 +51,16 @@
                 <!-- contact list -->
                 <section id="nav_contacts_list">
                     <!-- contact tab -->
-                    <div v-for="contact,i in contacts" class="nav_contact" :class="i === activeContact ? 'active' : '' " :mykey="i">
+                    <div v-for="contact , i in contacts" class="nav_contact" @click="selectActive(i)" :class="contact.visible === true ? 'active' : '' " :key="i">
                         <div class="user_info">
-                            <img :src="contact.avatar" alt="contact.name">
+                            <img :src="contact.avatar" :alt="contact.name">
                             <div>
                                 <div class="user_name">{{ contact.name }}</div>
-                                <div class="last_message_text">{{ contact.messages[0].text }}</div>
+                                <div class="last_message_text">{{ contact.messages[contact.messages.length - 1].text }}</div>
                             </div>
                         </div>
                         <div class="last_message_date">
-                            <div>{{ contact.messages[0].date }}</div>
+                            {{ contact.messages[contact.messages.length - 1].date }}
                         </div>
                     </div>
                 </section>
@@ -69,11 +69,11 @@
             <main id="chat_box">
                 <!-- chat section header -->
                 <section id="chat_box_contact">
-                    <div class="user_info">
-                        <img src="/img/avatar_io.jpg" alt="">
+                    <div class="user_info" v-for="contact in contacts" v-if="contact.visible === true">
+                        <img :src="contact.avatar" :alt="contact.name">
                         <div>
-                            <div class="user_name">Nome Utente</div>
-                            <div class="user_last_seen">Ultimo accesso oggi alle 10/01/2020 16:15:22</div>
+                            <div class="user_name">{{ contact.name }}</div>
+                            <div class="user_last_seen">{{ contact.messages[contact.messages.length - 1].date }}</div>
                         </div>
                     </div>
                     <!-- commands section -->
@@ -84,29 +84,18 @@
                     </div>
                 </section>
                 <!-- chat section messages -->
-                <section id="chat_box_messages">
+                <section id="chat_box_messages" v-for="contact,i in contacts" v-if="contact.visible === true">
                     <!-- chat message -->
-                    <div class="chat_message sent">
+                    <div v-for="message, i in contact.messages" class="chat_message" :class="message.status === 'received' ? 'received' : 'sent'" :msgkey="i">
                         <div class="message_text">
-                            asdasdasdasdasdasdasasd Lorem, ipsum dolor sit amet consectetur adipisicing elit. Officiis mollitia eaque cupiditate repudiandae ipsum quidem cumque suscipit eum saepe omnis, voluptate reiciendis voluptatem, at incidunt molestiae numquam illum porro qui.
+                            {{ message.text }}
                         </div>
-                        <div class="chat_message_data">10/01/2020 16:15:22</div>
-                    </div>
-                    <!-- chat message -->
-                    <div class="chat_message sent">
-                        <div class="message_text">
-                            asdasdasdasdasdasdasasd Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sed reprehenderit accusantium molestias atque, dolore quos recusandae eaque aperiam! Natus excepturi iste libero asperiores nihil cum unde impedit nostrum? Alias, dolorum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam aliquid voluptatibus cupiditate laborum quam deleniti maiores inventore facilis. Quas dolore accusantium nisi culpa odit quisquam laborum! Rem nisi aut unde. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloremque quod nemo, tempora velit itaque officia reiciendis a vel adipisci, amet magnam nihil aut, iste unde! Possimus provident expedita quasi quidem!
+                        <div class="chat_message_data">
+                            {{ message.date }}
                         </div>
-                        <div class="chat_message_data">11/01/2020 16:15:22</div>
-                    </div>
-                    <!-- chat message -->
-                    <div class="chat_message received">
-                        <div class="message_text">
-                            asdasdasdasdasdasdasasd Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum laudantium accusamus, nulla eius sequi optio, totam quia quo esse iusto sint inventore ex tenetur. Non explicabo totam blanditiis doloremque sit.
-                        </div>
-                        <div class="chat_message_data">12/01/2020 16:15:22</div>
                     </div>
                 </section>
+                <!-- user input chat message -->
                 <section id="new_message">
                     <i class="far fa-smile"></i>
                     <input type="text" placeholder="Scrivi un messaggio">

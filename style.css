@@ -37,60 +37,67 @@
     min-width: 400px;
     height: 100%;
     background-color: rgb(255, 255, 255);
+    border-right: 1px rgb(214, 214, 214) solid;
 }
 
 #nav_notifications {
     background-color: rgb(141,218,252);
     height: 80px;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
 }
 
 #nav_bell {
+    width: 60px;
+    height: 60px;
+    text-align: center;
     background-color: white;
-    border-radius: 50px;
+    border-radius: 50%;
     color: rgb(141,218,252);
-    padding: 6px;
     margin: 0 15px;
 }
 
 #nav_bell i {
-    font-size: 1.5em;
-    padding: 5px;
+    font-size: 1.4em;
+    line-height: 60px;
 }
 
 #nav_search {
-    /* padding: 6px;
-    height: 40px; */
-    height: 40px;
+    height: 50px;
     display: flex;
-    justify-content: space-between;
     align-items: center;
     background-color: rgb(250, 250, 250);
+    padding: 10px;
 }
 
 #nav_search .search {
     width: 10%;
     text-align: center;
+    color: gray;
 }
 
 #nav_search input {
+    border: 0;
+    outline: none;
     width: 90%;
+    background-color: inherit;
 }
 
 #nav_contacts_list {
     width: 100%;
-    display: flex;
-    flex-direction: column;
+    height: calc(100% - 200px);
     overflow: auto;
 }
 
 .nav_contact {
+    width: 100%;
     height: 90px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+.nav_contact:hover {
+    background-color: rgb(225,225,225);
 }
 
 .nav_contact .user_name {
@@ -98,7 +105,12 @@
 }
 
 .nav_contact.active {
-    background-color: rgb(234,234,234);
+    background-color: rgb(200,200,200);
+}
+
+.last_message_text {
+    height: 35px;
+    overflow: hidden;
 }
 
 .last_message_text, .last_message_date {
@@ -106,6 +118,11 @@
 }
 .last_message_date {
     min-width: 140px;
+    align-self: flex-start;
+    margin-top: 10px;
+    margin-right: 10px;
+    font-size: 0.9em;
+    text-align: right;
 }
 
 /* chat box rules */
@@ -139,6 +156,8 @@
     max-width: 80%;
     border-radius: 10px;
     margin: 10px 0;
+    padding: 15px;
+    min-width: 300px;
 }
 
 .chat_message.sent {
@@ -165,19 +184,22 @@
 }
 
 #new_message i {
-    font-size: 1.5em;
+    font-size: 1.6em;
     color: gray;
-    margin: 0 10px;
+    margin: 0 30px;
 }
 
 #new_message input {
     width: 90%;
     height: 50px;
+    padding: 0 15px;
+    border: none;
+    border-radius: 5px;
 }
 
 /* header left box/chat box */
 #nav_user_profile, #chat_box_contact {
-    min-width: 400px;
+    min-width: 398px;
     height: 70px;
     display: flex;
     justify-content: space-between;
@@ -186,12 +208,13 @@
 }
 
 .user_info {
+    height: 100%;
     display: flex;
     align-items: center;
 }
 
 .user_info img {
-    width: 50px;
+    width: 60px;
     border-radius: 50%;
     margin: 0 15px;
 }
@@ -204,6 +227,7 @@
     width: 100px;
     display: flex;
     justify-content: space-around;
+    margin-right: 15px;
 }
 
 .user_commands i {
