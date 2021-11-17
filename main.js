@@ -1,6 +1,11 @@
+var now = dayjs()
+console.log(now.$d);
+
 var app = new Vue({
     el: "#background_main",
     data: {
+        activeChat: 0,
+        newInputMsg: '',
         contacts: [
             {
                 name: 'Michele',
@@ -84,18 +89,30 @@ var app = new Vue({
                         status: 'received'
                         }
                 ]
-            },
+            }
         ]
     },
     methods: {
         selectActive(index) {
-            this.contacts.find((active)=>{
-                active.visible = false
-            })
-            if (this.contacts[index].visible === false) {
-                this.contacts[index].visible = true;
-                console.log(this.contacts[index].visible);
-            }
+            this.activeChat = index;
+        },
+        sendMessage(i) {
+            let newMessage =
+            {
+                date: now.$d,
+                text: newInputMsg,
+                status: 'sent'
+            };
+            let autoMessage =
+            {
+                date: now.$d,
+                text: "ok..",
+                status: 'received'
+            };
+            this.contacts[i].messages.push(newMessage);
+            setTimeout(()=> this.contacts[i].messages.push(autoMessage),1000);
+        
         }
     }
 })
+

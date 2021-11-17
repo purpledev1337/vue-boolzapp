@@ -132,8 +132,7 @@
     height: 100%;
     background-image: url("https://user-images.githubusercontent.com/15075759/28719144-86dc0f70-73b1-11e7-911d-60d70fcded21.png");
     display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    flex-wrap: wrap;
 }
 
 #chat_box_contact .user_name {
@@ -150,6 +149,8 @@
     flex-direction: column;
     padding: 50px;
     overflow: auto;
+    width: 100%;
+    height: calc(100% - 140px);
 }
 
 #chat_box_messages .chat_message {
@@ -177,10 +178,12 @@
 
 #new_message {
     background-color: rgb(243, 238, 233);
+    width: 100%;
     height: 70px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    align-self: flex-end;
 }
 
 #new_message i {
@@ -199,6 +202,7 @@
 
 /* header left box/chat box */
 #nav_user_profile, #chat_box_contact {
+    width: 100%;
     min-width: 398px;
     height: 70px;
     display: flex;

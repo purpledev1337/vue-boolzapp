@@ -19,7 +19,7 @@
             <nav id="nav_box">
                 <section id="nav_user_profile">
                     <div class="user_info">
-                        <img src="/img/avatar_io.jpg" alt="">
+                        <img src="img/avatar_io.jpg" alt="">
                         <div class="user_name">Nome Utente</div>
                     </div>
                     <!-- commands section -->
@@ -51,7 +51,7 @@
                 <!-- contact list -->
                 <section id="nav_contacts_list">
                     <!-- contact tab -->
-                    <div v-for="contact , i in contacts" class="nav_contact" @click="selectActive(i)" :class="contact.visible === true ? 'active' : '' " :key="i">
+                    <div v-for="contact , i in contacts" class="nav_contact" @click="selectActive(i)" :class="i === activeChat ? 'active' : '' " :key="i">
                         <div class="user_info">
                             <img :src="contact.avatar" :alt="contact.name">
                             <div>
@@ -69,11 +69,11 @@
             <main id="chat_box">
                 <!-- chat section header -->
                 <section id="chat_box_contact">
-                    <div class="user_info" v-for="contact in contacts" v-if="contact.visible === true">
+                    <div class="user_info" v-for="contact,i in contacts" v-if="activeChat === i">
                         <img :src="contact.avatar" :alt="contact.name">
                         <div>
                             <div class="user_name">{{ contact.name }}</div>
-                            <div class="user_last_seen">{{ contact.messages[contact.messages.length - 1].date }}</div>
+                            <div class="user_last_seen">Ultimo accesso: {{ contact.messages[contact.messages.length - 1].date }}</div>
                         </div>
                     </div>
                     <!-- commands section -->
@@ -84,7 +84,7 @@
                     </div>
                 </section>
                 <!-- chat section messages -->
-                <section id="chat_box_messages" v-for="contact,i in contacts" v-if="contact.visible === true">
+                <section id="chat_box_messages" v-for="contact,i in contacts" v-if="activeChat === i" :key="i">
                     <!-- chat message -->
                     <div v-for="message, i in contact.messages" class="chat_message" :class="message.status === 'received' ? 'received' : 'sent'" :msgkey="i">
                         <div class="message_text">
@@ -98,13 +98,14 @@
                 <!-- user input chat message -->
                 <section id="new_message">
                     <i class="far fa-smile"></i>
-                    <input type="text" placeholder="Scrivi un messaggio">
+                    <input type="text" v-model="newInputMsg" placeholder="Scrivi un messaggio" @keyup.enter="sendMessage(activeChat)">
                     <i class="fas fa-microphone"></i>
                 </section>
             </main>
         </div>
     </div>
 
+    <script src="https://unpkg.com/dayjs@1.8.21/dayjs.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
     <script src="main.js"></script>
     
