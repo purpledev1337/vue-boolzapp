@@ -51,7 +51,7 @@
                 <!-- contact list -->
                 <section id="nav_contacts_list">
                     <!-- contact tab -->
-                    <div v-if="searchUserInput === '' " v-for="contact , i in contacts" class="nav_contact" @click="selectActive(i)" :class="i === activeChat ? 'active' : '' " :key="i">
+                    <div v-if="contact.name.toLowerCase().includes(searchUserInput.toLowerCase().split()) " v-for="contact , i in contacts" class="nav_contact" @click="selectActive(i)" :class="i === activeChat ? 'active' : '' " :key="i">
                         <div class="user_info">
                             <img :src="contact.avatar" :alt="contact.name">
                             <div>
