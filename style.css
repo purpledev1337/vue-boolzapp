@@ -94,6 +94,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: relative;
 }
 
 .nav_contact:hover {
@@ -117,12 +118,12 @@
     color: gray;
 }
 .last_message_date {
-    min-width: 140px;
-    align-self: flex-start;
-    margin-top: 10px;
-    margin-right: 10px;
+    margin-top: 6px;
+    margin-right: 6px;
     font-size: 0.9em;
-    text-align: right;
+    position: absolute;
+    top: 0;
+    right: 0;
 }
 
 /* chat box rules */

@@ -1,11 +1,11 @@
-var now = dayjs()
-console.log(now.$d);
+var now = new Date().toLocaleString()
 
 var app = new Vue({
     el: "#background_main",
     data: {
         activeChat: 0,
         newInputMsg: '',
+        searchUserInput:'',
         userWriting: 0,
         contacts: [
             {
@@ -100,13 +100,13 @@ var app = new Vue({
         sendMessage(i) {
             let newMessage =
             {
-                date: now.$d,
+                date: now,
                 text: this.newInputMsg,
                 status: 'sent'
             };
             let autoMessage =
             {
-                date: now.$d,
+                date: now,
                 text: "ok..",
                 status: 'received'
             };
