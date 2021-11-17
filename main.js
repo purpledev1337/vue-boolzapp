@@ -6,6 +6,7 @@ var app = new Vue({
     data: {
         activeChat: 0,
         newInputMsg: '',
+        userWriting: 0,
         contacts: [
             {
                 name: 'Michele',
@@ -100,7 +101,7 @@ var app = new Vue({
             let newMessage =
             {
                 date: now.$d,
-                text: newInputMsg,
+                text: this.newInputMsg,
                 status: 'sent'
             };
             let autoMessage =
@@ -109,8 +110,14 @@ var app = new Vue({
                 text: "ok..",
                 status: 'received'
             };
-            this.contacts[i].messages.push(newMessage);
-            setTimeout(()=> this.contacts[i].messages.push(autoMessage),1000);
+            if (this.newInputMsg !== '') {
+                this.userWriting = 1;
+                this.contacts[i].messages.push(newMessage);
+                this.newInputMsg = '';
+                setTimeout(()=> this.userWriting = 0,1200);
+                setTimeout(()=> this.contacts[i].messages.push(autoMessage),1000);
+
+            }
         
         }
     }
