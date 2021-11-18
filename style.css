@@ -117,6 +117,7 @@
 .last_message_text, .last_message_date {
     color: gray;
 }
+
 .last_message_date {
     margin-top: 6px;
     margin-right: 6px;
@@ -159,12 +160,33 @@
     border-radius: 10px;
     margin: 10px 0;
     padding: 15px;
+    padding-right: 30px;
     min-width: 300px;
+    cursor: default;
+    position: relative;
+}
+
+.chat_check {
+    font-size: 1.2em;
+    font-weight: 700;
+    position: absolute;
+    right: -5px;
+    top: 0;
+    transform: translate(100%, -20%);
+    display: none;
+}
+
+#chat_box_messages .chat_message:hover .chat_check {
+    display: block;
 }
 
 .chat_message.sent {
     background-color: rgb(213, 249, 186);
     align-self: flex-end;
+}
+
+.chat_message.sent .chat_check {
+    color: rgb(57, 126, 255);
 }
 
 .chat_message.received {
@@ -173,8 +195,27 @@
 }
 
 .chat_message_data {
+    margin-top: 10px;
     text-align: right;
     color: gray;
+    position: relative;
+}
+
+.chat_message_menu {
+    width: 200px;
+    background-color: white;
+    border: 1px solid black;
+    position: absolute;
+    right: 0;
+    z-index: 1000;
+}
+
+.message_menu_info, .message_menu_delete {
+    padding: 15px;
+}
+
+.message_menu_info {
+    border-bottom: 1px solid black;
 }
 
 #new_message {
@@ -222,6 +263,12 @@
     width: 60px;
     border-radius: 50%;
     margin: 0 15px;
+    display: block;
+}
+
+.user_name {
+    display: block;
+    margin-bottom: 5px;
 }
 
 #nav_user_profile .user_name {

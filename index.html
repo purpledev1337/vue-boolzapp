@@ -19,8 +19,8 @@
             <nav id="nav_box">
                 <section id="nav_user_profile">
                     <div class="user_info">
-                        <img src="img/avatar_io.jpg" alt="">
-                        <div class="user_name">Nome Utente</div>
+                        <img :src="userData.avatar" alt="userData.name">
+                        <div class="user_name">{{ userData.name }}</div>
                     </div>
                     <!-- commands section -->
                     <div class="user_commands">
@@ -51,7 +51,7 @@
                 <!-- contact list -->
                 <section id="nav_contacts_list">
                     <!-- contact tab -->
-                    <div v-if="contact.name.toLowerCase().includes(searchUserInput.toLowerCase().split()) " v-for="contact , i in contacts" class="nav_contact" @click="selectActive(i)" :class="i === activeChat ? 'active' : '' " :key="i">
+                    <div v-if="contact.name.toLowerCase().includes(searchUserInput.toLowerCase()) " v-for="contact , i in contacts" class="nav_contact" @click="selectActive(i)" :class="i === activeChat ? 'active' : '' " :key="i">
                         <div class="user_info">
                             <img :src="contact.avatar" :alt="contact.name">
                             <div>
@@ -87,12 +87,19 @@
                 <!-- chat section messages -->
                 <section id="chat_box_messages" v-for="contact,i in contacts" v-if="activeChat === i" :key="i">
                     <!-- chat message -->
-                    <div v-for="message, i in contact.messages" class="chat_message" :class="message.status === 'received' ? 'received' : 'sent'" :msgkey="i">
+                    <div v-for="message, i in contact.messages" class="chat_message" :class="message.status === 'received' ? 'received' : 'sent'" :msgkey="i" @click="openMenu(i)">
                         <div class="message_text">
                             {{ message.text }}
                         </div>
                         <div class="chat_message_data">
                             {{ message.date }}
+                            <div class="chat_check">
+                                &checkmark;
+                            </div>
+                        </div>
+                        <div v-if="contacts[activeChat].messages[i].infoIsOpen === 1" class="chat_message_menu">
+                            <div class="message_menu_info">Info messaggio</div>
+                            <div @click="deleteMessage(i)" class="message_menu_delete">Cancella messaggio</div>
                         </div>
                     </div>
                 </section>
